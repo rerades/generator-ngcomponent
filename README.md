@@ -1,19 +1,19 @@
-# What it does:
+# Functionality:
 
-This library generates the scaffolding for an angular component for you including Jasmine tests.
+This library is designed to automate the creation of the scaffolding for an Angular component, complete with Jasmine test placeholders.
 
+# Installation:
+Start by installing the Yeoman generator using the following guide: http://yeoman.io/codelab/setup.html
 
-# Installation
-First, install the yeoman generator: http://yeoman.io/codelab/setup.html
+Afterwards, install the 'generator-ngcomponent' using this command in your terminal:
 
-Then,
 ```sh
 $ npm install generator-ngcomponent -g
 ```
 
-## Usage
+## Usage:
 
-1. Optionally, create a `.yo-rc.json` file in the same directory you will perform generation. If you do not create this file it will be automatically generated for you. Sample:
+1. You may choose to create a `.yo-rc.json` file in the directory where the component will be generated. If not created, the file will be generated automatically. Here is an example:
 
     ```json
     {
@@ -27,31 +27,38 @@ $ npm install generator-ngcomponent -g
     }
     ```
     
-    - @`parentModule`: This  parameter defines the default module name. You will be also asked for the name upon generation of the module.
-    - @`templateDir`: This is the directory where the generator will put .tpl.html files for your component. Any folders that do not exist in this (as well as paths below) are created.
-    - @`componentDir`: This is the directory where the generator will put .component.js files for your component.
-    - @`specDir`: This is the directory where the generator will put test .spec.js files for your component.
-    - @`{component.name}`: Instances of this text will be replaced with the component name.
-2. Run the following command:
+    - `parentModule`: Defines the default module name. You'll be prompted to provide a name when generating the module.
+    - `templateDir`: States the directory where the template (.tpl.html) files for your component will be placed. Non-existent directories in the path will be created.
+    - `componentDir`: Specifies the directory where the component (.component.js) files will be stored.
+    - `specDir`: Indicates the directory where the Jasmine test (.spec.js) files for your component will be placed.
+    - `{component.name}`: All instances of this string will be replaced by the actual component name.
+    
+2. Execute the command:
+
     ```
     $ yo ngcomponent
     ```
-    The generator will prompt you the following:
-    - Component Name: Enter the name of the component in camel case. This will be converted to snake case wherever necessary throughout the code.
-    - Description: A short description of the component.
-    - Module Name: By default, this is taken from the "parentModule" parameter supplied in the yo.rc.json. The component is added to this module. This applies also for tests - the test uses `beforeEach('moduleName');` to locate the component. 
     
-## Structure:
-By default, the generator will create a structure similar to the following:
+    You'll then be prompted to enter the following:
+    - Component Name: Provide the component's name in camel case. The generator will automatically convert this to snake case where required.
+    - Description: A brief description of what the component does.
+    - Module Name: By default, this is derived from the "parentModule" parameter in yo.rc.json. The component will be added to this module. This is also true for the tests - the Jasmine test uses `beforeEach('moduleName');` to find the component.
+
+## Generated Structure:
+
+By default, the generator will create the following structure:
+
 ```
    shared/components/thing.js
    test/unit/components/thing.spec.js
    shared/templates/thing.tpl.html
 ```
 
-## Post-Generation notes:
-- The `templateUrl` in `shared/components/thing.js` must probably be changed.
-- The test spec purposely contains this code which should remind you  to write tests:
--        it('should have tests', function(){
+## After Generation:
+
+- Adjust `templateUrl` in `shared/components/thing.js` as needed.
+- The generated Jasmine test spec will contain code reminding you to populate the tests. This is what the placeholder test looks like:
+
+        it('should have tests', function(){
             expect(false).toBeTruthy();
         });
